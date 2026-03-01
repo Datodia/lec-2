@@ -13,7 +13,7 @@ function App() {
           fontFamily: 'monospace',
           fontSize: '30px'
         }}
-      >hello world</h1>
+      >Random Text</h1>
 
       <div className='container'>
 
