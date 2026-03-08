@@ -1,13 +1,40 @@
 import './App.css'
 import Header from './components/Header'
+import ProductCard from './components/ProductCard'
 import UserCard from './components/UserCard'
+import { products, users } from './data'
 
 function App() {
+
+  const handleVersion2 = () => {
+    console.log('Clicked Version 2')
+    // backedinda wamoigos informacia
+    // gamoachinos loader buttonshi
+    // daarenders mtelniti
+  }
+
+  const handleChange = (e) => {
+    console.log(e.target.value)
+  }
+
+  const handleMouseEnter = () => {
+    alert('Mouse entered')
+  }
+
+  const handleMouseLeave = () => {
+    console.log('MOuse Left')
+  }
+
+  const handleMouseMove = () => {
+    console.log('mouse moving')
+  }
+
+  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
     <div>
       <Header />
-      <h1 
+      <h1
         style={{
           color: 'red',
           fontFamily: 'monospace',
@@ -15,25 +42,43 @@ function App() {
         }}
       >Random Text</h1>
 
+      <button onClick={() => {
+        console.log('clicked version 1')
+      }} >Version 1</button>
+
+      <button onClick={handleVersion2}>Version 2</button>
+
+      <input
+        onChange={handleChange}
+        type="text"
+        placeholder='enter your name'
+      />
+
+      {/* {nums.map(n => (
+         <div className='blueBox'>{n}</div>
+      ))} */}
+
       <div className='container'>
+        {users.map((user, index) => (
+          <UserCard
+            key={user.id} // index may use
+            userName={user.fullName}
+            userImg={user.userImage}
+          />
+        ))}
+      </div>
 
-        <UserCard
-          userName={'Donald trump'}
-          userImg={'https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTu-GSY_bXjggu92Go8I0Od4bEoIE-RnSuaCRmN5xcL4lfSDQI169Wyg5hK0VegSLUJjpqlG47veDZ33C0'}
-        />
-        <UserCard 
-          userName={'Lionel messi'} 
-          userImg={'https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQ6pO5yKKYJwWYLNid0npWlujwRgzOPrBvFDQtcVX99jbb_suMQ6MuFLxCG-cqFH3DZYI4wX9y9gQJwvsg'}  
-        />
-        <UserCard 
-          userName={'Barak obama'} 
-          userImg={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2vzpFnQice-TrYb3JuD6GvltmBtbKpqfVUXPcYXBNyFhsgR_kseT28VUdTAjcgoaA-XPR4AAoXDIZ82Pl7TSN7iq-u2E1QexyhaZ4Uw&s=10'}
-        />
-        <UserCard 
-          userName={'George Vashington'} 
-          userImg={'https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcShrmKtWcGuoOetn56nCEQZKdEh6o2aC2G1GCcyjAtY0QUXHr0J4uJroqS887TxJT6lRJS6Vn7oKOX9OQ4'}
-        />
-
+      <h1>Products</h1>
+      <div className='container'>
+        {products.map(product => (
+          <ProductCard 
+            key={product.id}
+            productImg={product.img}
+            productName={product.title}
+            productPrice={product.price}
+            productReviews={product.review}
+          />
+        ))}
       </div>
     </div>
   )
